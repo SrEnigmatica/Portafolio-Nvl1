@@ -1,2 +1,2 @@
 # Portafolio-Nvl1
-Portafolio de una pcosas caracteristicas que se a ido trabajando
+Portafolio de algunas caracteristicas de Discord.js
