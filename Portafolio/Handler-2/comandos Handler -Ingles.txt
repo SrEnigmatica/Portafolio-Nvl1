@@ -1,0 +1,55 @@
+const { Perms } = require("../validacion/allow");
+const { Client } = require("discord.js");
+const { promisify } = require("util");
+const { glob } = require("glob");
+const PG = promisify(glob);
+const Ascii = require("ascii-table");
+
+
+//Parametros de Trabajo del Command Handler
+
+/**
+ * @param {Client} client
+ */
+
+//Exportaciones de Modelo
+
+module.exports = async (client) => {
+    const Table = new Ascii("Command Loaded");
+
+//Matriz Vacia
+
+CommandsArray = [ ];
+
+    (await PG(`${(process.cwd().replace(/\\/g, "/"))}/Comandos/**/*.js`)).map(async (file) => {
+    const command = require(file);
+
+    if(!command.name)
+    return Table.addRow(file.split("/")[7], "✖ FAILED", "Missing a name.")
+
+    if(!command.context && !command.description)
+    return Table.addRow(command.name, "✖ FAILED", " missing and description")
+
+    if(command.permission) {
+        if(Perms.includes(command.permission))
+        command.defaultPermission = false;
+        else
+    return Table.addRow(command.name, "✖ FAILED", "Permission is Invalid.")
+           }
+
+    client.commands.set(command.name, command);
+    CommandsArray.push(command);
+
+    await Table.addRow(command.name, "♦ COMPLETADO");
+
+  });
+
+console.log(Table.toString());
+
+//PERMISSIONS CHECK //
+
+client.on(`ready`, async () => {
+    const MainGuild = await client.guilds.cache.get(" ");
+MainGuild.commands.set(CommandsArray);
+    });
+}

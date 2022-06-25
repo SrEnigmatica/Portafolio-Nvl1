@@ -1,0 +1,10 @@
+Para abarcar todos los temas y Asesorias disponibles aremos uso de los siguientes apps y paginas web
+ojo te mencionare todas en general asi que tu decides cual usar o cual no
+
+iconos 32x32 : https://icon-icons.com/es/download/12065/PNG/32/
+normalize: https://necolas.github.io/normalize.css/
+visual estudio code : https://code.visualstudio.com/
+clip : https://bennettfeely.com/clippy/
+node.js : https://nodejs.org/es/
+extra: https://es.piliapp.com/emoji/list/
+replit : https://replit.com/login?goto=%2F~

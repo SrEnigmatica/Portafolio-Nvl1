@@ -1,0 +1,13 @@
+TODO LOS ARCHIVOS DEBEN ESTAR DENTRO DE ESTE ARCHIVO, NO IMPORTA EL ORDEN
+console.clear()
+const Discord = require('discord.js')
+const { readdirSync } = require('fs')
+
+require("dotenv").config()
+const client = new Discord.Client({
+    intents: [
+        "GUILDS",
+        "GUILD_MESSAGES"
+    ]
+})
+client.login(process.env.TOKEN)

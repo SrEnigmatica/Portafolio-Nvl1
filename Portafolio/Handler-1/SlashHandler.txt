@@ -1,0 +1,10 @@
+// Slash handler //
+client.slashcommands = new Discord.Collection();
+require("./SlashCommands.js")
+readdirSync('./SlashCommands').forEach(async(categorys) => {
+    const commandFilesSlash = readdirSync(`./SlashCommands/${categorys}`).filter((archivo) => archivo.endsWith('js'))
+    for (const archivo of commandFilesSlash) {
+        const command = require(`./SlashCommands/${categorys}/${archivo}`)
+        client.slashcommands.set(command.data.name, command)
+    }
+})

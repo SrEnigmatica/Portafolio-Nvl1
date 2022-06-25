@@ -1,0 +1,8 @@
+Instalar las siguientes dependencias: 
+
+util
+glob
+ascii-table
+discord.js
+ms
+fm

@@ -1,0 +1,7 @@
+// Event handler //
+for (const file of readdirSync('./Events')) {
+    if (file.endsWith('.js')) {
+        let event = require(`./Events/${file}`)
+        client.on(event.name, event.run.bind(null, client))
+    }
+}

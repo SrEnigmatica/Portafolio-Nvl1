@@ -1,0 +1,9 @@
+// Command Handler //
+client.commands = new Discord.Collection()
+readdirSync('./Commands').forEach(async(subcarpetas) => {
+    readdirSync(`./Commands/${subcarpetas}`).map((commands) => {
+        let command = require(`./Commands/${subcarpetas}/${commands}`)
+        console.log(`${commands} ✅ Cargado Correctamente`)
+        client.commands.set(command.name, command)
+    })
+})
